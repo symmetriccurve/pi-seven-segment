@@ -15,7 +15,44 @@ var segment_e =  new Gpio(12, 'out') // left bottom
 var segment_f = new Gpio(6, 'out') // left top
 var segment_g = new Gpio(26, 'out') // middle
 
-var numbers = { 0:'abcdef',1:'bc',2:'abged',3:'abgcd',4:'fgbc',5:'afgcd',6:'afgcde',7:'abc',8:'abcdefg',9:'abcdfg'}
+var numbers = {
+    0:'abcdef',
+    1:'bc',
+    2:'abged',
+    3:'abgcd',
+    4:'fgbc',
+    5:'afgcd',
+    6:'afgcde',
+    7:'abc',
+    8:'abcdefg',
+    9:'abcdfg',
+    'A':'efabcg',
+    'B':'abcdefg',
+    'C':'afed',
+    'D':'abcdef',
+    'E' :'afged',
+    'F' :'afge',
+    'G' :'afedc',
+    'H' :'fbgec',
+    'I' :'fe',
+    'J' :'bcde',
+    'K' :'fbgec',
+    'L' :'fed',
+    'M' :'eca',
+    'N' :'egc',
+    'O' :'abcdef',
+    'P' :'efgba',
+    'Q' :'fbd',
+    'R' :'eg',
+    'S' :'afgcd',
+    'T' :'fegd',
+    'U' :'fedcb',
+    'V' :'edc',
+    'W' :'fbd',
+    'X' :'febcg',
+    'Y' :'fbgcd',
+    'Z' :'abged',
+  }
 // var number_0= 'abcdef'
 // var number_1= 'bc'
 // var number_2= 'abged'
@@ -56,6 +93,7 @@ var numbers = { 0:'abcdef',1:'bc',2:'abged',3:'abgcd',4:'fgbc',5:'afgcd',6:'afgc
 //var button = new Gpio(8, 'in', 'both');
 //var request = require('request')
 function segmentToBinary(character){
+    character = character.toUpperCase()
     character = numbers[character]
   	character = character.split('')
     var binary = [0,0,0,0,0,0,0]
@@ -71,7 +109,6 @@ function segmentToBinary(character){
 }
 
 function writeToLed(character){
-
   var litup = segmentToBinary(character)
   segment_a.writeSync(litup[0])
   segment_b.writeSync(litup[1])
@@ -82,17 +119,19 @@ function writeToLed(character){
   segment_g.writeSync(litup[6])
 }
 
-var number = 0
-var countInterval = setInterval(function(){
-    number = number + 1
-
-    if(number < 10){
-      console.log("Writing t LED", number)
-      writeToLed(number)
-    }else{
-      clearInterval(countInterval)
-    }
-},1000)
+writeToLed('S')
+// var number = 0
+// var countInterval = setInterval(function(){
+//     number = number + 1
+//
+//     if(number < 10){
+//       console.log("Writing t LED", number)
+//       writeToLed(number)
+//     }else{
+//       clearInterval(countInterval)
+//     }
+//
+// },1000)
 // a.writeSync(1)
 // b.writeSync(1)
 // c.writeSync(1)
