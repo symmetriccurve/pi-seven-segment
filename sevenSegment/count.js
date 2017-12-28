@@ -1,12 +1,6 @@
 var Gpio = require('onoff').Gpio // Constructor function for Gpio objects.
 //var button = new Gpio(8, 'out')
-// var a = new Gpio(2, 'out')
-// var b = new Gpio(3, 'out')
-// var c = new Gpio(4, 'out')
-// var d = new Gpio(5, 'out')
-// var e = new Gpio(6, 'out')
-// var f = new Gpio(7, 'out')
-
+var request = require('request')
 var segment_a = new Gpio(19, 'out') // top middle
 var segment_b = new Gpio(13, 'out') // top right
 var segment_c =  new Gpio(20, 'out') // bottom right
@@ -108,25 +102,57 @@ function segmentToBinary(character){
     return binary
 }
 
-function writeToLed(character){
-  var litup = segmentToBinary(character)
-  segment_a.writeSync(litup[0])
-  segment_b.writeSync(litup[1])
-  segment_c.writeSync(litup[2])
-  segment_d.writeSync(litup[3])
-  segment_e.writeSync(litup[4])
-  segment_f.writeSync(litup[5])
-  segment_g.writeSync(litup[6])
-}
+// function writeToLed(character,timer){
+//   var litup = segmentToBinary(character)
+//   setTimeout(function(){
+//     segment_a.writeSync(litup[0])
+//     segment_b.writeSync(litup[1])
+//     segment_c.writeSync(litup[2])
+//     segment_d.writeSync(litup[3])
+//     segment_e.writeSync(litup[4])
+//     segment_f.writeSync(litup[5])
+//     segment_g.writeSync(litup[6])
+//   },timer)
+// }
 
-writeToLed('S')
+var firebase = require('firebase');
+var app = firebase.initializeApp({
+    apiKey: "AIzaSyC30CGz85NkcAdsYjjYcXfR_hzDOe2h9vs",
+    authDomain: "fiery-heat-9547.firebaseapp.com",
+    databaseURL: "https://fiery-heat-9547.firebaseio.com",
+    projectId: "fiery-heat-9547",
+    storageBucket: "fiery-heat-9547.appspot.com",
+    messagingSenderId: "635577791704"
+});
+
+var starCountRef = firebase.database().ref('pi');
+starCountRef.on('value', function(snapshot) {
+  console.log("Value Retrived from FireBase",snapshot.val().sevenSegment)
+  console.log("Writing to LED",snapshot.val().sevenSegment[0] )
+  writeToLed(snapshot.val().sevenSegment['0'])
+});
+
+request('https://api.myjson.com/bins/1d3efz', function (error, response, body) {
+  //console.log('error:', error); // Print the error if one occurred
+  //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', JSON.parse(body)); // Print the HTML for the Google homepage.
+  const responseJSON = JSON.parse(body)
+  writeToLed(responseJSON.hello)
+});
+
+// writeToLed('V',1000)
+// writeToLed('I',2000)
+// writeToLed('K',3000)
+// writeToLed('R',4000)
+// writeToLed('A',5000)
+// writeToLed('M',6000)
 // var number = 0
 // var countInterval = setInterval(function(){
 //     number = number + 1
 //
 //     if(number < 10){
-//       console.log("Writing t LED", number)
-//       writeToLed(number)
+//       console.log("Writing to LED", number)
+//       writeToLed(number.toString())
 //     }else{
 //       clearInterval(countInterval)
 //     }
