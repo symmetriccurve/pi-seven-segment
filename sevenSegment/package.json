@@ -1,0 +1,22 @@
+{
+  "name": "sevensegment",
+  "version": "0.1.0",
+  "description": "A simple utility to mimic BCD to seven segment display",
+  "main": "count.js",
+  "dependencies": {
+    "onoff": "^1.1.9",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "seven-segment",
+    "7",
+    "segment",
+    "segment"
+  ],
+  "author": "Vikram Belde",
+  "license": "MIT"
+}
