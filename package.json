@@ -1,0 +1,48 @@
+{
+  "name": "single-seven-segment",
+  "version": "0.1.1",
+  "description": "A simple utility function that converts single character strings to seven segment display",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/symmetriccurve/pi-seven-segment.git"
+  },
+  "dependencies": {
+    "onoff": "^1.1.9"
+  },
+  "keywords": [
+    "seven",
+    "segment",
+    "7",
+    "segment",
+    "raspberry",
+    "pi",
+    "pi",
+    "raspberry",
+    "pi",
+    "3",
+    "raspberry",
+    "pi",
+    "2",
+    "led",
+    "seven",
+    "segment",
+    "display",
+    "single",
+    "digit",
+    "seven",
+    "segment",
+    "display",
+    "single",
+    "difit."
+  ],
+  "author": "Vikram Belde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/symmetriccurve/pi-seven-segment/issues"
+  },
+  "homepage": "https://github.com/symmetriccurve/pi-seven-segment#readme"
+}
