@@ -11,6 +11,18 @@ sss.defineGPIOPins({
     g: 26
   })
 
+// Seven Segment Display
+/*
+------ A ----
+|           |
+F           B
+| ----G---- |
+E           C
+|           |
+------ D ----
+
+*/
+
 var firebase = require('firebase');
 var app = firebase.initializeApp({
     apiKey: "AIzaSyC30CGz85NkcAdsYjjYcXfR_hzDOe2h9vs",
