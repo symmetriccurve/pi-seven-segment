@@ -1,6 +1,6 @@
 ```npm install single-seven-segment```
 
-![alt text](https://github.com/symmetriccurve/pi-seven-segment/blob/develop/E-Character.jpeg)
+![alt text](https://raw.githubusercontent.com/symmetriccurve/pi-seven-segment/develop/E-Character.jpeg)
 
 //Require the Package
 
